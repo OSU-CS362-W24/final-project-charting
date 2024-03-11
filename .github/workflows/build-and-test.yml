@@ -16,9 +16,9 @@ jobs:
           node-version: 21
       - run: npm ci
       - run: npm run build
-      - run: npm test:unit
-      - run: npm test:integration
-      - run: npm test:e2e
+      - run: npm run test:unit
+      - run: npm run test:integration
+      - run: npm run test:e2e
       - if: ${{ inputs.upload-pages-artifact }}
         uses: actions/upload-pages-artifact@v1
         with:
