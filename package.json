@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve --open",
-    "test": "exit 0;"
+    "test": "jest"
   },
   "devDependencies": {
     "css-loader": "^6.7.4",
@@ -20,5 +20,8 @@
     "moduleNameMapper": {
       "\\.css$": "<rootDir>/src/__mocks__/styleMock.js"
     }
+  },
+  "dependencies": {
+    "jest": "^29.7.0"
   }
 }
