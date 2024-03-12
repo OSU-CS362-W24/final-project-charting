@@ -24,8 +24,7 @@
   "jest": {
     "moduleNameMapper": {
       "\\.css$": "<rootDir>/src/__mocks__/styleMock.js"
-    },
-    "testEnvironment": "jsdom"
+    }
   },
   "dependencies": {
     "jest": "^29.7.0"

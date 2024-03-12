@@ -1,4 +1,6 @@
-
+/**
+ * @jest-environment jsdom
+ */
 
 const fs = require("fs")
 const domTesting = require('@testing-library/dom')
