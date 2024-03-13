@@ -5,7 +5,11 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve --open",
-    "test": "jest"
+    "test": "jest",
+    "start_e2e": "serve src",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test_e2e": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "devDependencies": {
     "css-loader": "^6.7.4",
@@ -14,7 +18,8 @@
     "style-loader": "^3.3.3",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1",
-    "webpack-dev-server": "^4.15.0"
+    "webpack-dev-server": "^4.15.0",
+    "@testing-library/cypress": "^10.0.1"
   },
   "jest": {
     "moduleNameMapper": {
@@ -22,6 +27,8 @@
     }
   },
   "dependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "serve": "^14.2.0"
   }
+  
 }
