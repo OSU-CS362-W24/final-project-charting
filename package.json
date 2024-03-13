@@ -6,10 +6,9 @@
     "build": "webpack",
     "start": "webpack serve --open",
     "test": "jest",
-    "start_e2e": "serve src",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test_e2e": "start-server-and-test start http://localhost:3000 cy:run"
+    "test:e2e": "start-server-and-test start http://localhost:8080 cy:run"
   },
   "devDependencies": {
     "css-loader": "^6.7.4",
