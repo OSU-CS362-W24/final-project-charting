@@ -5,7 +5,10 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve --open",
-    "test": "jest"
+    "test": "npm run test:unit; npm run test:integration; npm run test:e2e",
+    "test:unit": "jest",
+    "test:integration": "echo \"Not Set Up Yet\"; exit 0;",
+    "test:e2e": "echo \"Not Set Up Yet\"; exit 0;"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.3.4",
