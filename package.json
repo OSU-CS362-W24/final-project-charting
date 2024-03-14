@@ -6,7 +6,7 @@
     "build": "webpack",
     "start": "webpack serve --open",
     "test": "npm run test:unit; npm run test:integration; npm run test:e2e",
-    "test:unit": "jest",
+    "test:unit": "jest --testPathIgnorePatterns=bar",
     "test:integration": "jest bar",
     "test:e2e": "echo \"Not Set Up Yet\"; exit 0;"
   },
