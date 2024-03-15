@@ -79,3 +79,38 @@ it("Save a chart and verifies it is present in the gallery", function(){
     cy.findByRole("link", {name : "Gallery"}).click();
     cy.contains(chartTitle).should('exist');
 })
+
+/**
+ * Re-opening a saved chart
+ */
+it("Re-opens a saved chart", () => {
+  // Create the chart with some data
+  cy.visit("/line.html");
+  cy.clearDataBtn();
+  cy.enterChartData();
+  const chartTitle = "Test Title";
+  cy.findByLabelText("Chart title").type(chartTitle);
+  cy.findByRole("button", { name: "Generate chart" }).click();
+
+  // Save chart and find in gallery
+  cy.findByRole("button", { name: "Save chart" }).click();
+  cy.findByRole("link", {name: "Gallery"}).click();
+  const chart = cy.contains(chartTitle);
+  chart.should("exist");
+
+  // Click on the chart to open it
+  chart.click();
+
+  // Verify the chart is opened
+  cy.url().should("include", "/line.html");
+
+  // Verify the chart data is present
+  cy.findByLabelText("Chart title").should("have.value", chartTitle);
+  cy.findAllByLabelText("X").should("have.length", 6);
+  cy.findAllByLabelText("Y").should("have.length", 6);
+
+  // Verify the chart is visible
+  const chartImg = cy.findByRole("img");
+  chartImg.should("be.visible");
+  chartImg.should("have.attr", "src").should("not.be.empty");
+})
