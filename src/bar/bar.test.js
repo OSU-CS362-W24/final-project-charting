@@ -97,10 +97,7 @@ test("clearing chart data", async function() {
     yValues = await domTesting.queryAllByLabelText(document, "Y")
 
     await userEvent.type(title, "Title")
-
-    color.value = "ffffff"  //don't know if this is allowed but not sure if there's a better way to do it
-                            //feel free to suggest ideas
-    
+    color.value = "ffffff"
     await userEvent.type(xAxis, "X")
     await userEvent.type(yAxis, "Y")
     await userEvent.type(xValues[0], "1")
