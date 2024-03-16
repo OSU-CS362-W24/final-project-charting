@@ -27,33 +27,35 @@
 require("@testing-library/cypress/add-commands")
 
 Cypress.Commands.add("clearDataBtn", function(){
-    cy.get('#clear-chart-btn').click();
+    cy.findByRole("button", { name: "Clear chart data" }).click();
     cy.wait(100);
 })
 
 Cypress.Commands.add("enterChartData",function(){
-    cy.get('#x-label-input').type('X Axis');
-    cy.get('#y-label-input').type('Y Axis');
-    cy.get('#add-values-btn').click();
+    cy.findByLabelText("X label").type("X Axis");
+    cy.findByLabelText("Y label").type("Y Axis");
 
-    cy.get('input[type="number"]').eq(0).type('1'); // 1st input for x-value
-    cy.get('input[type="number"]').eq(1).type('3'); // 1st input for y-value
-    cy.get('#add-values-btn').click();
+    // Click the button to add value inputs
+    cy.findByRole("button", { name: "+" }).click();
 
-    cy.get('input[type="number"]').eq(2).type('2'); // 2th input for x-value
-    cy.get('input[type="number"]').eq(3).type('7'); // 2th input for y-value
-    cy.get('#add-values-btn').click();
+    cy.findAllByLabelText("X").eq(0).type('1'); // 1st input for x-value
+    cy.findAllByLabelText("Y").eq(0).type('3'); // 1st input for y-value
+    cy.findByRole("button", { name: "+" }).click();
 
-    cy.get('input[type="number"]').eq(4).type('3'); // 3rd input for x-value
-    cy.get('input[type="number"]').eq(5).type('15'); // 3rd input for y-value
-    cy.get('#add-values-btn').click();
+    cy.findAllByLabelText("X").eq(1).type('2'); // 2th input for x-value
+    cy.findAllByLabelText("Y").eq(1).type('7'); // 2th input for y-value
+    cy.findByRole("button", { name: "+" }).click();
 
-    cy.get('input[type="number"]').eq(6).type('4'); // 4th input for x-value
-    cy.get('input[type="number"]').eq(7).type('25'); // 4th input for y-value
-    cy.get('#add-values-btn').click();
+    cy.findAllByLabelText("X").eq(2).type('3'); // 3rd input for x-value
+    cy.findAllByLabelText("Y").eq(2).type('15'); // 3rd input for y-value
+    cy.findByRole("button", { name: "+" }).click();
 
-    cy.get('input[type="number"]').eq(8).type('5'); // 5th input for x-value
-    cy.get('input[type="number"]').eq(9).type('40'); // 5th input for y-value
+    cy.findAllByLabelText("X").eq(3).type('4'); // 4th input for x-value
+    cy.findAllByLabelText("Y").eq(3).type('25'); // 4th input for y-value
+    cy.findByRole("button", { name: "+" }).click();
+
+    cy.findAllByLabelText("X").eq(4).type('5'); // 5th input for x-value
+    cy.findAllByLabelText("Y").eq(4).type('40'); // 5th input for y-value
 
     // cy.get('#x-label-input').clear().type('X Axis');
     // cy.get('#y-label-input').clear().type('Y Axis');
@@ -102,8 +104,8 @@ Cypress.Commands.add("checkEnteredData", function(){
 
 
     // Check labels
-    cy.get('#x-label-input').should('have.value', 'X Axis');
-    cy.get('#y-label-input').should('have.value', 'Y Axis');
+    cy.findByLabelText("X label").should('have.value', 'X Axis');
+    cy.findByLabelText("Y label").should('have.value', 'Y Axis');
 
     // Check the X and Y values
     const dataPairs = [
@@ -115,8 +117,8 @@ Cypress.Commands.add("checkEnteredData", function(){
     ];
 
     dataPairs.forEach((pair, index) => {
-        cy.get('.x-value-input').eq(index).should('have.value', pair.x);
-        cy.get('.y-value-input').eq(index).should('have.value', pair.y);
+        cy.findAllByLabelText("X").eq(index).should('have.value', pair.x);
+        cy.findAllByLabelText("Y").eq(index).should('have.value', pair.y);
     });
 
 })
