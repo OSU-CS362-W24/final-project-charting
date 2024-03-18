@@ -9,7 +9,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test": "npm run test:unit; npm run test:integration; npm run test:e2e",
-    "test:unit": "jest --testPathIgnorePatterns=bar, chartBuilder",
+    "test:unit": "jest --testPathIgnorePatterns=bar --testPathIgnorePatterns=chartBuilder",
     "test:integration": "jest bar chartBuilder",
     "test:e2e": "start-server-and-test start:e2e http://localhost:8080 cy:run"
   },
